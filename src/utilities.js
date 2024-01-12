@@ -41,7 +41,7 @@ const connectedParts = [
 ];
 
 
-export const drawSkeleton = (keypoints, minConfidence, ctx, scale = 1) => {
+export const drawSkeletonLines = (keypoints, minConfidence, ctx, scale = 1) => {
     connectedParts.forEach(([i, j]) => {
         const keypoint1 = keypoints[i];
         const keypoint2 = keypoints[j];
@@ -56,4 +56,13 @@ export const drawSkeleton = (keypoints, minConfidence, ctx, scale = 1) => {
             ctx.stroke();
         }
     });
+};
+
+export const calculateAngle = (a, b, c) => {
+    const radians = Math.atan2(c.y - b.y, c.x - b.x) - Math.atan2(a.y - b.y, a.x - b.x);
+    let angle = Math.abs(radians * 180.0 / Math.PI);
+    if (angle > 180.0) {
+        angle = 360 - angle;
+    }
+    return angle;
 };
