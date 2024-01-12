@@ -30,10 +30,6 @@ This will launch the project in your default web browser. The development server
 
 4. **Fetching and Pulling the Latest Version**
 
-To fetch the latest changes without merging them into your current branch: 
+To fetch the latest changes without merging them into your current branch: ***git fetch origin***
 
-git fetch origin
-
-To fetch the latest changes and immediately merge them into your current branch: 
-
-git pull origin main
+To fetch the latest changes and immediately merge them into your current branch: ***git pull origin main***
