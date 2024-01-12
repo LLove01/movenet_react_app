@@ -28,7 +28,7 @@ npm start
 
 This will launch the project in your default web browser. The development server typically starts on http://localhost:3000.
 
-4 . **Fetching and Pulling the Latest Version**
+4. **Fetching and Pulling the Latest Version**
 
 To fetch the latest changes without merging them into your current branch: 
 
