@@ -1,3 +1,11 @@
+// Define the colors
+export const colors = {
+    skeletonColor: "rgb(30, 185, 128)",
+    keypointColor: "rgb(30, 185, 128)",
+    keypointOutlineColor: "rgb(255, 104, 89)",
+    trailColor: "rgb(255, 104, 89)"
+};
+
 export const drawKeypoints = (keypoints, minConfidence, ctx, scale = 1) => {
     for (let i = 0; i < keypoints.length; i++) {
         const keypoint = keypoints[i];
@@ -6,8 +14,12 @@ export const drawKeypoints = (keypoints, minConfidence, ctx, scale = 1) => {
             const { y, x } = keypoint;
             ctx.beginPath();
             ctx.arc(x * scale, y * scale, 5, 0, 2 * Math.PI);
-            ctx.fillStyle = "aqua";
+            ctx.fillStyle = colors.keypointColor;
             ctx.fill();
+
+            ctx.strokeStyle = colors.keypointOutlineColor;
+            ctx.lineWidth = 2;
+            ctx.stroke();
         }
     }
 };
@@ -46,13 +58,12 @@ export const drawSkeletonLines = (keypoints, minConfidence, ctx, scale = 1) => {
         const keypoint1 = keypoints[i];
         const keypoint2 = keypoints[j];
 
-        // Draw only if both keypoints have a high enough confidence
         if (keypoint1.score > minConfidence && keypoint2.score > minConfidence) {
             ctx.beginPath();
             ctx.moveTo(keypoint1.x * scale, keypoint1.y * scale);
             ctx.lineTo(keypoint2.x * scale, keypoint2.y * scale);
             ctx.lineWidth = 2;
-            ctx.strokeStyle = "green";
+            ctx.strokeStyle = colors.skeletonColor;
             ctx.stroke();
         }
     });
